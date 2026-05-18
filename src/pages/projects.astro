@@ -1,0 +1,59 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ProjectOne from '../assets/blog-placeholder-1.jpg';
+import ProjectTwo from '../assets/blog-placeholder-2.jpg';
+import ProjectThree from '../assets/blog-placeholder-3.jpg';
+import ProjectFour from '../assets/blog-placeholder-4.jpg';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const projects = [
+	{
+		title: 'Follow',
+		description: '聚合订阅、阅读流和统一品牌感的产品项目卡片。',
+		href: 'https://example.com/follow',
+		image: ProjectOne,
+	},
+	{
+		title: 'Music',
+		description: '强调封面图视觉占比的音乐产品展示页原型。',
+		href: 'https://example.com/music',
+		image: ProjectTwo,
+	},
+	{
+		title: 'Reader',
+		description: '适合博客工具或内容产品的简洁项目卡片布局。',
+		href: 'https://example.com/reader',
+		image: ProjectThree,
+	},
+	{
+		title: 'Lab',
+		description: '作为实验项目集合页的响应式宫格展示方案。',
+		href: 'https://example.com/lab',
+		image: ProjectFour,
+	},
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={`项目 · ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main class="page-shell projects-page">
+			<section class="listing-hero panel compact">
+				<p class="eyebrow">项目橱窗</p>
+				<h1>作品与实验</h1>
+				<p class="section-intro">这一页对应可复刻的项目宫格结构：大图、名称、简介、整卡点击。</p>
+			</section>
+			<section class="project-grid">
+				{projects.map((project) => <ProjectCard {...project} />)}
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
